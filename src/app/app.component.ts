@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { Person } from "./shared/models/person.model";
+import { Person, RestrictedPerson } from "./shared/models/person.model";
 
 @Component({
   selector: "app-root",
@@ -7,10 +7,13 @@ import { Person } from "./shared/models/person.model";
     <p>Name: {{ person.name }}</p>
     <p>Email: {{ person.email }}</p>
     <p>Age: {{ person.age }}</p>
+    <h2>Restricted Person</h2>
+    <p>Age {{restrictedPerson.age}}
   `
 })
 export class AppComponent implements OnInit {
   person: Person;
+  restrictedPerson: RestrictedPerson;
 
   ngOnInit(): void {
     this.person = {
@@ -18,6 +21,8 @@ export class AppComponent implements OnInit {
       email: "alias@nbc.com",
       age: 34
     };
+
+    this.restrictedPerson = {...this.person,age:21}
   }
 
   someExample() {
